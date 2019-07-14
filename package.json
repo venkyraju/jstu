@@ -25,5 +25,6 @@
   "bugs": {
     "url": "https://github.com/venkyraju/jstu/issues"
   },
-  "homepage": "https://github.com/venkyraju/jstu#readme"
-}
+  "homepage": "https://github.com/venkyraju/jstu#readme",
+  "tuts":{ "babel-7-for-nodejs":"https://www.codementor.io/osazeedoosagie/easy-set-up-babel-7-for-nodejs-rg3zak6pj"
+}}
