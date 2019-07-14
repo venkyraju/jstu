@@ -1,0 +1,29 @@
+{
+  "name": "jstu",
+  "version": "1.0.0",
+  "description": "jstuts",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/node": "^7.5.0",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/register": "^7.4.4",
+    "nodemon": "^1.19.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node index.js "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/venkyraju/jstu.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/venkyraju/jstu/issues"
+  },
+  "homepage": "https://github.com/venkyraju/jstu#readme"
+}
