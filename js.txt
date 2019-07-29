@@ -23,7 +23,7 @@ typeof alert // "function"  (3)
 typeof [] // "object"
 
 For to check type of and arrray  - Object.prototype.toString.call([])// [object Array]
-For null returns "object" – this is an error in the language, it’s not actually an object.
+For null returns "object" ï¿½ this is an error in the language, itï¿½s not actually an object.
 
 
 Functions:
@@ -31,10 +31,10 @@ Function Expression : let sayHi = function() { ... };
 arrow functions : let func = (arg1, arg2, ...argN) => expression
 
 Arrays:
-arr.push(...items) – adds items to the end,
-arr.pop() – extracts an item from the end,
-arr.shift() – extracts an item from the beginning,
-arr.unshift(...items) – adds items to the beginning.
+arr.push(...items) ï¿½ adds items to the end,
+arr.pop() ï¿½ extracts an item from the end,
+arr.shift() ï¿½ extracts an item from the beginning,
+arr.unshift(...items) ï¿½ adds items to the beginning.
 
 arr.splice(index[, deleteCount, elem1, ..., elemN]) :-
  it starts from the position index: removes deleteCount elements and then inserts elem1, ..., elemN at their place. Returns the array of removed elements.
@@ -55,7 +55,7 @@ arr.slice(start, end) - It returns a new array containing all items from index "
 let arr = ["t", "e", "s", "t"];
 alert( arr.slice(1, 3) ); // e,s
 
-arr.concat(arg1, arg2...) -joins the array with other arrays and/or items.It accepts any number of arguments – either arrays or values.
+arr.concat(arg1, arg2...) -joins the array with other arrays and/or items.It accepts any number of arguments ï¿½ either arrays or values.
 let arr = [1, 2];
 // merge arr with [3,4]
 alert( arr.concat([3, 4])); // 1,2,3,4
@@ -69,9 +69,9 @@ arr.forEach(function(item, index, array) {
   // ... do something with item
 });
 
-arr.indexOf(item, from) – looks for item starting from index from, and returns the index where it was found, otherwise -1.
-arr.lastIndexOf(item, from) – same, but looks for from right to left.
-arr.includes(item, from) – looks for item starting from index from, returns true if found.
+arr.indexOf(item, from) ï¿½ looks for item starting from index from, and returns the index where it was found, otherwise -1.
+arr.lastIndexOf(item, from) ï¿½ same, but looks for from right to left.
+arr.includes(item, from) ï¿½ looks for item starting from index from, returns true if found.
 
 find, filter and findIndex: -
 The find() method returns the value of the first element in the array that satisfies the provided testing function. Otherwise undefined is returned.
@@ -121,10 +121,10 @@ arr.reduce -
 let value = arr.reduce(function(previousValue, item, index, array) {
   // ...
 }, initial);
-item – is the current array item.
-index – is its position.
-array – is the array.
-previousValue – is the result of the previous function call,
+item ï¿½ is the current array item.
+index ï¿½ is its position.
+array ï¿½ is the array.
+previousValue ï¿½ is the result of the previous function call,
 initial - for the first call.
 let arr = [1, 2, 3, 4, 5];
 let result = arr.reduce((sum, current) => sum + current, 0);
@@ -143,7 +143,7 @@ let arr = [ 1, 2, 15 ];
 arr.sort(compareNumeric);
 alert(arr);  // 1, 2, 15
 
-Actually, a comparison function is only required to return a positive number to say “greater” and a negative number to say “less”.
+Actually, a comparison function is only required to return a positive number to say ï¿½greaterï¿½ and a negative number to say ï¿½lessï¿½.
 let arr = [ 1, 2, 15 ];
 arr.sort(function(a, b) { return a - b; });
 alert(arr);  // 1, 2, 15
@@ -154,7 +154,7 @@ arr.reverse();
 alert( arr ); // 5,4,3,2,1
 
 str.split(delim) - It splits the string into an array by the given delimiter delim
-The split method has an optional second numeric argument – a limit on the array length. If it is provided, then the extra elements are ignored
+The split method has an optional second numeric argument ï¿½ a limit on the array length. If it is provided, then the extra elements are ignored
 let names = 'Bilbo, Gandalf, Nazgul';
 let arr = names.split(', ');
 for (let name of arr) {
@@ -183,12 +183,12 @@ a) Execution with Object constructor:  var rect1 = new Object();
 The new keyword performs following four tasks:
 
 1.It creates new empty object e.g. obj = { };
-2.It sets new empty object's invisible 'prototype'(“__proto__”) property to be the constructor function's visible and accessible 'prototype'(Foo.prototype) property. (Every function has visible 'prototype' property whereas every object includes invisible 'prototype' property)
+2.It sets new empty object's invisible 'prototype'(ï¿½__proto__ï¿½) property to be the constructor function's visible and accessible 'prototype'(Foo.prototype) property. (Every function has visible 'prototype' property whereas every object includes invisible 'prototype' property)
 3.It binds property or function which is declared with this keyword to the new object.
 4.It returns newly created object unless the constructor function returns a non-primitive value (custom JavaScript object). If constructor function does not include return statement then compiler will insert 'return this;' implicitly at the end of the function. If the constructor function returns a primitive value then it will be ignored.
 
 b) Execution with Object literal: var rect1 = {};
 When the system finds {} on the RHS of equal to symbol, it follows 3 steps
-i) Creates a new empty object
-ii) Sets the value of implicit prototype “__proto__” of a new empty object to Object.prototype
-iii) Returns the reference of new object
+1. Creates a new empty object
+2. Sets the value of implicit prototype ï¿½__proto__ï¿½ of a new empty object to Object.prototype
+3. Returns the reference of new object
