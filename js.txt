@@ -192,3 +192,91 @@ When the system finds {} on the RHS of equal to symbol, it follows 3 steps
 1. Creates a new empty object
 2. Sets the value of implicit prototype �__proto__� of a new empty object to Object.prototype
 3. Returns the reference of new object
+
+Ajax:
+-----
+AJAX stands for Asynchronous JavaScript And XML.
+The two major features of AJAX allow you to do the following:
+
+1.Make requests to the server without reloading the page
+2.Receive and work with data from the server
+
+In a nutshell, it is the use of the `XMLHttpRequest` object to communicate with servers.
+It can send and receive information in various formats, including JSON, XML, HTML, and text files.
+
+to make the request:
+we instantiate a HTTP request object using XMLHttpRequest
+
+if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
+    httpRequest = new XMLHttpRequest();
+} else if (window.ActiveXObject) { // IE 6 and older
+    httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+will make a request to server by calling open() and send() methods of the HTTP request object
+httpRequest.open('GET', 'http://www.example.org/some.file', true);
+httpRequest.send();
+
+open() accepts there parameter 
+The first parameter is the HTTP request method – GET, POST, HEAD, or another method supported by your server 
+The second parameter is the URL making request to. As a security feature, you cannot call URLs on 3rd-party domains by default
+The optional third parameter is to sets whether the request is asynchronous on not. By default it's value is true
+
+send() method accepts one parameters that is for send data to the server if POST-ing the request.
+Format of the data is may as like a query string or as other formats, like multipart/form-data, JSON, XML, and so on.
+"name=value&anothername="+encodeURIComponent(myVar)+"&so=on"
+
+MIME type / request header can be set by using the setRequestHeader property on HTTP request object,
+setRequestHeader() must call it after calling open(), but before calling send().
+ex:httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+to process the response:
+
+The 'readyState' property holds the status of XMLHttpRequest object.
+will define a function on onreadystatechange property of the HTTP request object to execute on readyState change
+
+status code of  readyState property are
+0 -	UNSENT - Client has been created. open() not called yet. - (request not initialized)
+1	- OPENED	- open() has been called. - (server connection established)
+2	- HEADERS_RECEIVED - send() has been called, and headers and status are available. - (request received)
+3	- LOADING - Downloading; responseText holds partial data/Response's body is being received - (processing request)
+4	- DONE - The operation is complete. This could mean that either the data transfer has been completed successfully or failed. - (request finished and response is ready)
+
+Next, check the HTTP response status codes of the HTTP response
+200: "OK"
+403: "Forbidden"
+404: "Page not found"
+
+xhr.onreadystatechange = function() {
+  if (xhr.readyState == 3) {
+    // loading
+  }
+  if (xhr.readyState == 4 && httpRequest.status === 200 ) {
+    // successfully request finished 
+  }
+};
+
+we have two options to access that data:
+httpRequest.responseText – returns the server response as a string of text
+httpRequest.responseXML – returns the response as an XMLDocument object you can traverse with JavaScript DOM functions
+
+Ex:
+    let httpRequest = new XMLHttpRequest();
+    if (!httpRequest) {
+      alert('Giving up :( Cannot create an XMLHTTP instance');
+      return false;
+    }
+    httpRequest.onreadystatechange = function() {
+    if (httpRequest.readyState === 4) {
+      if (httpRequest.status === 200) {
+        alert(httpRequest.responseText);
+      } else {
+        alert('There was a problem with the request.');
+      }
+    }
+  };
+    httpRequest.open('GET', 'test.html');
+    httpRequest.send();
+
+
+
