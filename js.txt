@@ -278,5 +278,84 @@ Ex:
     httpRequest.open('GET', 'test.html');
     httpRequest.send();
 
+Promise:
 
+A promise is an object that may produce a single value some time in the future: either a resolved value, or a reason that it’s not resolved.
+A Promise is in one of these states:
 
+pending: initial state, neither fulfilled nor rejected.
+fulfilled: meaning that the operation completed successfully.
+rejected: meaning that the operation failed.
+
+A promise can be created using Promise constructor.
+Syntax
+
+var promise = new Promise(function(resolve, reject){
+     //do something
+});
+
+Promise constructor takes only one argument,a callback function - ie is called the 'executor'.
+executor function takes two arguments, resolve and reject function
+When the promise is created, this executor function runs automatically
+when executor/callback function runs and if everything went well with desired operation then call resolve()
+If desired operations do not go well then call() reject.
+
+let promise = new Promise(function(resolve, reject) {
+  // the function is executed automatically when the promise is constructed
+  if (/* everything turned out fine */) {
+    resolve("Stuff worked!");
+  }
+  else {
+    reject(Error("It broke"));
+  }
+});
+
+Promises can be consumed by registering functions using .then() and .catch() methods based on whether state is fulfilled or rejected.
+
+then() is invoked when a promise is either resolved or rejected and this method takes two functions as parameters  i.e a success callback and a failure callback
+success callback function is executed if promise is resolved and a result is received.
+failure callback function is executed if promise is rejected and an error is received
+promise.then(
+  function(result) { /* handle a successful result */ },
+  function(error) { /* handle an error */ }
+);
+
+catch() is invoked when a promise is either rejected or some error has occured in execution and this method takes one function as parameter, to handle errors or promise rejections
+
+promise.then(
+  function(result) { /* handle a successful result */ },
+).catch(
+  function(error) { /* handle an error */ }
+)
+
+Promisifying XMLHttpRequest
+
+function get(url) {
+  // Return a new promise.
+  return new Promise(function(resolve, reject) {
+let httpRequest = new XMLHttpRequest();
+    if (!httpRequest) {
+      alert('Giving up :( Cannot create an XMLHTTP instance');
+      return false;
+    }
+    httpRequest.onreadystatechange = function() {
+    if (httpRequest.readyState === 4) {
+      if (httpRequest.status === 200) {
+        alert(httpRequest.responseText);
+        resolve(httpRequest.responseText);
+      } else {
+        alert('There was a problem with the request.');
+        reject(httpRequest.statusText)
+      }
+    }
+  };
+    httpRequest.open('GET', 'test.html');
+    httpRequest.send();
+  });
+}
+
+get('story.json').then(function(response) {
+  console.log("Success!", response);
+}, function(error) {
+  console.error("Failed!", error);
+})
