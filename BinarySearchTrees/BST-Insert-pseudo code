@@ -1,0 +1,35 @@
+create a new node
+1.start at the root.
+    check if there is a root, if there is not-root now becomes that new node
+    if there is a root, check if the value of the new node is greater than or less than the value of the root
+    if it is greater
+        check to see if there is a node to the right.
+            if there is not, add that node as the right prorperty.
+            if there is, move that node and repeat these steps
+    if it is less
+        check to see if there is a node to the left.
+            if there is not, add that node as the left prorperty.
+            if there is, move that node and repeat these steps
+
+            
+-------------------------------------
+Define insert method on prototype (value)
+  Create new node with passed in value
+  Create recursive function
+    If current node value > value && left child is undefined
+      Insert node as left child
+    If current node value > value
+      Recurse current node left child
+    If current node value <value && right child is undefined
+      Insert node as right child
+    If current node value <value
+      Recurse current node right child
+  Call recursive function on root node
+------------------------------------------
+Insert(Node root, Key k)
+1 if (root == null) // insertion position found
+2   return new Node(k);
+3 if (k <= root.key) // proceed to the left branch
+4   root.left = Insert(root.left, k);
+5 else // k > root.key, i.e. proceed to the right branch
+6   root.right = Insert(root.right, k); 
