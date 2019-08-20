@@ -1,0 +1,217 @@
+LinkedList:
+->LinkedList is the dynamic data structure, as we can add or remove elements at ease, and it can even grow as needed.
+->Just like arrays, linked lists store elements sequentially, but don’t store the elements contiguously like an array.
+->A data element can be represented as a node in a linked list.
+->Each node consists of two parts: data & pointer to the next node.
+->A 'head' pointer is maintained which points to the first node of the list.
+->The last node points to `null`.
+Drawbacks:
+->Random access of data elements is not allowed.
+->Nodes must be accessed sequentially starting from the first one. Therefore, search operation is slow on a linked list.
+->It uses more memory than arrays because of the storage used by their pointers.
+Types:
+->There are a few different types of linked lists.
+->But the most popular ones are: 'Singly', 'Doubly' and 'Circular'.
+
+// User defined class node 
+class Node { 
+    // constructor 
+    constructor(data) 
+    { 
+        this.data = data; 
+        this.next = null
+    } 
+} 
+
+// linked list class 
+class LinkedList { 
+    constructor() 
+    { 
+        this.head = null; 
+        this.size = 0; 
+    } 
+  
+    // functions to be implemented 
+    // Insert
+        // add(data) 
+        // insertAt(data, index)
+    // Delete
+        // removeFrom(location) 
+        // removeElement(data) 
+    // Search
+        // indexOf(data)
+    // Helper Methods 
+        // sizeOfList()
+} 
+
+Add():
+
+In the order to add an element at the end of the list we consider the following :
+
+-> If the list is empty then add an element and it will be head.
+-> If the list is not empty then iterate to the end of the list and add an element at the end of the list
+`current` is used to iterate through the list after every iteration we update it to be the next of the current node. If next is null(the last element of a list contains null in the next) then we add the element to the list.
+
+// adds an element at the end 
+// of list 
+add(data) { 
+	// creates a new node 
+	const node = new Node(data); 
+
+	// to store current node 
+	let current; 
+
+	// if list is Empty add the 
+	// element and make it head 
+	if (this.head == null) 
+		this.head = node; 
+	else { 
+		current = this.head; 
+
+		// iterate to the end of the 
+		// list 
+		while (current.next) { 
+			current = current.next; 
+		} 
+
+		// add node 
+		current.next = node; 
+	} 
+	this.size++; 
+} 
+
+insertAt(data, index):
+ It inserts an element at the given index in a list.
+
+->if the index is zero we add an element at the front of the list and make it head
+->If the index is the last position of the list we append the element at the end of the list
+->if the index is in between 0 or size – 1 we iterate over to the index and add an element at that index
+
+
+// insert element at the position index 
+// of the list 
+insertAt(element, index)  { 
+    if (index > 0 && index > this.size) return;
+        // creates a new node 
+        const node = new Node(element); 
+        let curr, prev; 
+        curr = this.head; 
+  
+        // add the element to the 
+        // first index 
+        if (index == 0) { 
+            node.next = head; 
+            this.head = node; 
+        } else { 
+            curr = this.head; 
+            let it = 0; 
+  
+            // iterate over the list to find 
+            // the position to insert 
+            while (it < index) { 
+                it++; 
+                prev = curr; 
+                curr = curr.next; 
+            } 
+  
+            // adding an element 
+            node.next = curr; 
+            prev.next = node; 
+        } 
+        this.size++; 
+} 
+
+
+remove(data):
+// removes a given element from the 
+// list 
+removeElement(data) { 
+    var current = this.head; 
+    var prev = null; 
+  
+    // iterate over the list 
+    while (current != null) { 
+        // comparing element with current 
+        // element if found then remove the 
+        // and return true 
+        if (current.data === data) { 
+            if (prev == null) { 
+                this.head = current.next; 
+            } else { 
+                prev.next = current.next; 
+            } 
+            this.size--; 
+            return current.data; 
+        } 
+        prev = current; 
+        current = current.next; 
+    } 
+    return -1; 
+} 
+
+
+removeAt(index):
+ – It removes and returns an element from the list from the specified index
+
+->If the index is 0 then we remove head and make next node head of the list
+->if the index is size – 1 then we remove the last element form the list and make prev the last element
+->if its in between 0 to size – 1 we remove the element by using prev and current node
+
+// removes an element from the 
+// specified location 
+removeAt(index) { 
+    if (index > 0 && index > this.size) 
+        return -1; 
+    else { 
+        let curr, prev, it = 0; 
+        curr = this.head; 
+        prev = curr; 
+  
+        // deleting first element 
+        if (index == = 0) { 
+            this.head = curr.next; 
+        } else { 
+            // iterate over the list to the 
+            // position to removce an element 
+            while (it < index) { 
+                it++; 
+                prev = curr; 
+                curr = curr.next; 
+            } 
+  
+            // remove the element 
+            prev.next = curr.next; 
+        } 
+        this.size--; 
+  
+        // return the remove element 
+        return curr.data; 
+    } 
+} 
+
+search(data) ,
+indexOf(element) – it returns the index of a given element, if the element is in the list.
+// finds the index of element 
+indexOf(data) { 
+    var count = 0; 
+    var current = this.head; 
+  
+    // iterate over the list 
+    while (current != null) { 
+        // compare each element of the list 
+        // with given element 
+        if (current.data === data) 
+            return count; 
+        count++; 
+        current = current.next; 
+    } 
+  
+    // not found 
+    return -1; 
+} 
+In this method, we iterate over the list to find the index of an element. If it is not present in the list it returns -1 instead.
+
+length() { 
+    console.log(this.size); 
+    return this.size;
+} 
