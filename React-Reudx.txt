@@ -1,0 +1,44 @@
+Three Principles
+-1)Single source of truth:
+the whole sate of the application is stored in an object tree within a single store.
+-2) state is read-only
+ the only way to change the state is to by emiting actions
+-3)Changes are made with purefunctions
+  By Reducer - which is pure function, that take the previous state and action and retruns the next sate
+Pure function:
+-if we pass same input, will always retunr the same output
+-Produces no side effects
+
+React:
+	React lifecycle methods:
+
+Mouting methods:
+A component mounts when it first time inserted it to the Dom
+-Constructor()
+-componentWillMount() - dom is not ready yet
+-render() - 
+-componentDidMount() - dom is ready -this is the best place to perform an iteration with a non-react enviroment like browser or HTTP requests
+
+Updating Methods:
+on state or prop chages component my re-renders
+-ComponentWillReciveProps(nextprops) - nextprops we will get
+-shouldComponetUpdate(nextProps, nextSate)- caled before re-render - to argument - (nextProps, nextSate)
+	if this method returns true - component will re-renders/updated
+	if it returs false - component will not re-renders/update
+-componentWillUpdate() - we cannot call the setSate() method, but, to do any non react setup before renders, such as interacting with an API or Checking the window size
+-render()
+-componentDidUpdate(prevProps, prevState, snapshot) - html will be renderd - this is the best place to perform an iteration with a non-react enviroment like browser or HTTP requests
+
+Unmounting methods:
+-compoentWillUnmount() - it is callde before compoent removed form DOM.
+-componentDidCatch(error, info) - only in 16, this method only catches errors in child components and not in the component itself.
+
+https://programmingwithmosh.com/react/react-interview-questions/
+
+Redux,saga Workflow: Redux saga Workflow
+1.View layer: is our React component. It makes a request for action based on interactions on/with the application.
+2.Action:, commonly called action creator returns a formatted object of the action type and optional payload which is then dispatched to the store.
+3.Redux-saga: is a Redux middleware for handling async operations like fetching photos and videos from our API. It makes asynchronous operations look like standard Javascript synchronous code making it easy to read, test, and reason.
+4.APIs; are resource locations to fetch photos and videos in our own case.
+5.Reducers: are simply pure functions whose purpose in life is to accept the state tree and an action from the store; make a copy of the previous state, transform it and then return a new state to the store.
+6.Store is a single object that holds the complete state of your application. It delegates the reducer with the responsibility of changing state when an action is dispatched.

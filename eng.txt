@@ -1,0 +1,10 @@
+let's discuss about that later.
+
+my responsibilities like converting the HTML in to reusable react components
+
+-----------------
+responsibilities
+concurrency
+meetings 
+discussions
+progress

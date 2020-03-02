@@ -4,7 +4,7 @@ create a new node
     if there is a root, check if the value of the new node is greater than or less than the value of the root
     if it is greater
         check to see if there is a node to the right.
-            if there is not, add that node as the right prorperty.
+            if there is not, add that node as the right property.
             if there is, move that node and repeat these steps
     if it is less
         check to see if there is a node to the left.

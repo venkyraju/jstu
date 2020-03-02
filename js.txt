@@ -1,4 +1,4 @@
-Javascript
+﻿Javascript
 Primitive types                                                                                                   
 String: for strings. A string may have one or more characters
 Number: for numbers of any kind: integer or floating-point.
@@ -102,6 +102,7 @@ let results = arr.filter(function(item, index, array) {
 });
 var words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
 const result = words.filter(word => word.length > 6);
+
 console.log(result);
 // expected output: Array ["exuberant", "destruction", "present"]
 
